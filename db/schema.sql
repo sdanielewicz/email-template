@@ -1,0 +1,6 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS gamespace_db;
+
+-- CREATE DATABASE
+CREATE DATABASE gamespace_db;
+
