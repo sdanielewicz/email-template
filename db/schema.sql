@@ -1,6 +1,6 @@
 -- DROP DATABASE
-DROP DATABASE IF EXISTS gamespace_db;
+DROP DATABASE IF EXISTS emailgen_db;
 
 -- CREATE DATABASE
-CREATE DATABASE gamespace_db;
+CREATE DATABASE emailgen_db;
 

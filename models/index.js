@@ -1,5 +1,5 @@
 // import models
-const testModel = require('./testModel');
+const User = require('./User');
 
 
 // belongs to
@@ -12,4 +12,4 @@ const testModel = require('./testModel');
 //   ProductTag,
 // };
 
-module.exports = {testModel};
+module.exports = {User};
