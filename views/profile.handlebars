@@ -4,5 +4,20 @@
   </div>
 </div>
 
+<div class="col-md-6 project-list">
+    <h3>Email Templates:</h3>
 
-<script src="./js/logout.js"></script>
+    {{#each emails as |email|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/email/{{email.id}}">{{email.name}}</a></h4>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+<script src="./js/profile.js"></script>
+
+
+{{!-- <script src="./js/logout.js"></script> --}}

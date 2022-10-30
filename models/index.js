@@ -1,15 +1,13 @@
-// import models
 const User = require('./User');
+const Email = require('./Email');
 
+User.hasMany(Email, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-// belongs to
-// hasMany
+Email.belongsTo(User, {
+  foreignKey: 'user_id'
+});
 
-// module.exports = {
-//   Product,
-//   Category,
-//   Tag,
-//   ProductTag,
-// };
-
-module.exports = {User};
+module.exports = { User, Email }  ;

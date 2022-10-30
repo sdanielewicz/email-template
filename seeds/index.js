@@ -1,7 +1,9 @@
 const sequelize = require('../config/connection');
-const { User} = require('../models');
+const { User, Email} = require('../models');
 
 const userData = require('./userData.json');
+const emailData = require('./emailData.json');
+
 
 const seedDB = async () => {
   await sequelize.sync({ force: true });
@@ -12,6 +14,15 @@ const seedDB = async () => {
     returning: true,
   });
   console.log('\n----- USERS SEEDED -----\n');
+
+  for (const emails of emailData) {
+    await Email.create({
+      ...emails,
+      // user_id: users[Math.floor(Math.random() * users.length)].id,
+      user_id: 2,
+    });
+  }
+  console.log('\n----- EMAILS SEEDED -----\n');
 
   process.exit(0);
 };

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Server Onboard",
+    "email_body": "Hello NAME, Please go to SERVER."
+  },
+  {
+    "name": "Availability",
+    "email_body": "Hello NAME, I'm available on DAY."
+  },
+  {
+    "name": "Thanks",
+    "email_body": "Thanks NAME, looking forward to it."
+  }
+]

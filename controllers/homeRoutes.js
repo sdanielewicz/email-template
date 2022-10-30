@@ -1,10 +1,35 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Email } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
     res.render('login');
 })
+
+router.get('/', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const emailData = await Email.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const emails = emailData.map((email) => email.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('profile', { 
+      emails, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get('/profile', withAuth, async (req, res) => {
     try {
