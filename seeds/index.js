@@ -19,7 +19,7 @@ const seedDB = async () => {
     await Email.create({
       ...emails,
       // user_id: users[Math.floor(Math.random() * users.length)].id,
-      user_id: 2,
+      user_id: 2,                                           
     });
   }
   console.log('\n----- EMAILS SEEDED -----\n');
