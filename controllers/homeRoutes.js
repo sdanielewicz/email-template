@@ -51,11 +51,16 @@ router.get('/profile', withAuth, async (req, res) => {
     console.log("MY NAME       " + userData.name);
     console.log("MY EMAIL       " + userData.email);
 
-    const emailData = await Email.findAll({
-      // include: [{model: User}]
-    }
-    );
+    // const emailData = await Email.findAll({
+    //   // include: [{model: User}]
+    //   where: {user_id:1}
+    // }
+    // );
+
+    const emailData = userData.emails;
+
     console.log(JSON.stringify(userData, null, 2));
+    console.log("WHAT IS "+emailData)
 
   //  const joinUser =  await User.findOne({ where: { id: userId } });
 
