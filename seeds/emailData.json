@@ -1,6 +1,6 @@
 [
   {
-    "name": "Server Onboard",
+    "name": "Server Onboarding",
     "email_body": "Hello NAME, Please go to SERVER."
   },
   {
@@ -10,5 +10,41 @@
   {
     "name": "Thanks",
     "email_body": "Thanks NAME, looking forward to it."
+  },
+  {
+    "name": "Followup",
+    "email_body": "Hi NAME, just follwoing up."
+  },
+  {
+    "name": "Confirmation",
+    "email_body": "Hi NAME, just confirming your appointment on DAY."
+  },
+  {
+    "name": "Invite",
+    "email_body": "Hi NAME, Would like to invite you to lunch on DAY."
+  },
+  {
+    "name": "Sales",
+    "email_body": "Hi NAME. Does your IT org need vulnerability managment?"
+  },
+  {
+    "name": "Late",
+    "email_body": "Hi NAME, Running NUM minutes late."
+  },
+  {
+    "name": "Invoice",
+    "email_body": "Hi NAME. You owe me $NUM."
+  },
+  {
+    "name": "Reboot",
+    "email_body": "Hi NAME, just reboot your THING."
+  },
+  {
+    "name": "Survey",
+    "email_body": "Hi NAME, please fill out our internal survey about THING."
+  },
+  {
+    "name": "Out",
+    "email_body": "Hi, I'm out of office until DAY."
   }
 ]

@@ -43,22 +43,19 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Email }]
+      include: [{ model: Email}]
+      // ,  where : {user_id:2}
     });
 
-    
+    console.log("MY ID       " + userData.id);
+    console.log("MY NAME       " + userData.name);
+    console.log("MY EMAIL       " + userData.email);
 
     const emailData = await Email.findAll({
-      include: [{model: User}]
-       
-        
-        
-      
- 
+      // include: [{model: User}]
     }
-     
-
     );
+    console.log(JSON.stringify(userData, null, 2));
 
   //  const joinUser =  await User.findOne({ where: { id: userId } });
 
