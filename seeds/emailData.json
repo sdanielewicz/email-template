@@ -1,50 +1,50 @@
 [
   {
     "name": "Server Onboarding",
-    "email_body": "Hello NAME, Please go to SERVER."
+    "email_body": "Hello %%%, Please go to %%%."
   },
   {
     "name": "Availability",
-    "email_body": "Hello NAME, I'm available on DAY."
+    "email_body": "Hello %%%, I'm available on %%%."
   },
   {
     "name": "Thanks",
-    "email_body": "Thanks NAME, looking forward to it."
+    "email_body": "Thanks %%%, looking forward to it."
   },
   {
     "name": "Followup",
-    "email_body": "Hi NAME, just follwoing up."
+    "email_body": "Hi %%%, just follwoing up."
   },
   {
     "name": "Confirmation",
-    "email_body": "Hi NAME, just confirming your appointment on DAY."
+    "email_body": "Hi %%%, just confirming your appointment on %%%."
   },
   {
     "name": "Invite",
-    "email_body": "Hi NAME, Would like to invite you to lunch on DAY."
+    "email_body": "Hi %%%, Would like to invite you to lunch on %%%."
   },
   {
     "name": "Sales",
-    "email_body": "Hi NAME. Does your IT org need vulnerability managment?"
+    "email_body": "Hi %%%. Does your IT org need vulnerability managment?"
   },
   {
     "name": "Late",
-    "email_body": "Hi NAME, Running NUM minutes late."
+    "email_body": "Hi %%%, Running %%% minutes late."
   },
   {
     "name": "Invoice",
-    "email_body": "Hi NAME. You owe me $NUM."
+    "email_body": "Hi %%%. You owe me $%%%."
   },
   {
     "name": "Reboot",
-    "email_body": "Hi NAME, just reboot your THING."
+    "email_body": "Hi %%%, just reboot your %%%."
   },
   {
     "name": "Survey",
-    "email_body": "Hi NAME, please fill out our internal survey about THING."
+    "email_body": "Hi %%%, please fill out our internal survey about %%%."
   },
   {
     "name": "Out",
-    "email_body": "Hi, I'm out of office until DAY."
+    "email_body": "Hi, I'm out of office until %%%."
   }
 ]

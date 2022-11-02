@@ -7,15 +7,18 @@
 <div class="col-md-6 project-list">
     <h3>Email Templates:</h3>
 
+{{!-- {{regex}} --}}
     {{#each emails as |email|}}
+    
     <div class="row mb-2">
       <div class="col-md-8">
         <h4>{{email.name}}: {{email_body}}</h4>
       </div>
     </div>
     {{/each}}
+
   </div>
-</div>
+
 
 <script src="./js/profile.js"></script>
 

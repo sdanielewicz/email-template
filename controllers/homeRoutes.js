@@ -44,12 +44,11 @@ router.get('/profile', withAuth, async (req, res) => {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Email}]
-      // ,  where : {user_id:2}
     });
 
-    console.log("MY ID       " + userData.id);
-    console.log("MY NAME       " + userData.name);
-    console.log("MY EMAIL       " + userData.email);
+    // console.log("MY ID       " + userData.id);
+    // console.log("MY NAME       " + userData.name);
+    // console.log("MY EMAIL       " + userData.email);
 
     // const emailData = await Email.findAll({
     //   // include: [{model: User}]
@@ -59,25 +58,34 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const emailData = userData.emails;
 
-    console.log(JSON.stringify(userData, null, 2));
-    console.log("WHAT IS "+emailData)
-
-  //  const joinUser =  await User.findOne({ where: { id: userId } });
-
-  //     const joinEmail = await Email.findOne({ where: { id: emailId } });
-     
-    
-      
-  
-    // console.log(emailData);
+    // console.log(JSON.stringify(userData, null, 2));
+    // console.log("WHAT IS "+emailData)
 
     const user = userData.get({ plain: true });
     const emails = emailData.map((email) => email.get({ plain: true }));
 
+    // const newemail = JSON.stringify(emails);
+    console.log(emails[1].email_body)
+
+    emails.forEach(element => {
+      // var count = ""
+      let re = new RegExp('([%])+([%])+([%])');
+      var emailBody = element.email_body
+      console.log(emailBody)
+      console.log(emailBody.replace(re, 'YES?'))
+      // console.log(newBody)
+      // count += JSON.stringify(yes)
+      // console.log(count);
+   
+    });
+    // for (var i =0; i<emails.length; i++){
+      
+    // }
+
     res.render('profile', {
       ...user,
       emails,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
