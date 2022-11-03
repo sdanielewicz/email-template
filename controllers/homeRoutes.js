@@ -2,6 +2,9 @@ const router = require('express').Router();
 const {Email, User} = require('../models');
 const withAuth = require('../utils/auth');
 
+var emailBodies= [];
+var num;
+
 router.get('/', async (req, res) => {
   try {
 
@@ -65,26 +68,28 @@ router.get('/profile', withAuth, async (req, res) => {
     const emails = emailData.map((email) => email.get({ plain: true }));
 
     // const newemail = JSON.stringify(emails);
-    console.log(emails[1].email_body)
+    console.log(emails.email_body)
+
 
     emails.forEach(element => {
       // var count = ""
-      let re = new RegExp('([%])+([%])+([%])');
-      var emailBody = element.email_body
-      console.log(emailBody)
-      console.log(emailBody.replace(re, 'YES?'))
-      // console.log(newBody)
-      // count += JSON.stringify(yes)
-      // console.log(count);
-   
-    });
-    // for (var i =0; i<emails.length; i++){
+      // let re = new RegExp('/([%])+([%])+([%])/g');
+      var ittrEmailBody = element.email_body;
       
-    // }
 
+      // result here needs to be iterable
+      emailBodies.push(ittrEmailBody.replace(/([%])+([%])+([%])/g, '<input class="form-input" type="text"/>'));
+      console.log(emailBodies) // console.log(newBody)
+      
+      num = emailBodies.length
+      // return emailBodies;
+    });
+   
     res.render('profile', {
       ...user,
       emails,
+      num,
+      emailBodies,
       logged_in: true,
     });
   } catch (err) {

@@ -19,17 +19,10 @@ module.exports = {
         return `<span for="img" aria-label="gear">⚙️</span>`;
       }
     },
-    regex: (emails) => {
+    lessthan: (num) => {
+      if(num > emailBodies.length)
       
-      let re = new RegExp('/([%])+([%])+([%])/g');
-      
-      emails.forEach(element => {
-        var count = ""
-        count += JSON.stringify(element)
-        console.log(count);
-      });
-      
-        // emails.replace(re, '<h1>YES?</h1>')
+        return 
       }
-      // replace(re, '<>form<>')
+      
     };

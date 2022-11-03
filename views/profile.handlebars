@@ -12,11 +12,21 @@
     
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4>{{email.name}}: {{email_body}}</h4>
+        <h4>{{email.name}}:</h4>
+        
       </div>
     </div>
     {{/each}}
 
+    {{#each emailBodies}}
+    {{num}}
+ <div class="row mb-2">
+      <div class="col-md-8">
+        <p>{{{this}}}</p>
+        
+      </div>
+    </div>
+{{/each}}
   </div>
 
 

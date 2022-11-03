@@ -22,8 +22,7 @@
     }
   };
 
-  
-  
+
   
 //   document
 //     .querySelector('.new-project-form')
