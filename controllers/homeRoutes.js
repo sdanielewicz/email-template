@@ -2,8 +2,8 @@ const router = require('express').Router();
 const {Email, User} = require('../models');
 const withAuth = require('../utils/auth');
 
-var emailBodies= [];
-var num;
+// var emailBodies= {id: "", emailForm: ""};
+var emailBodies = [];
 
 router.get('/', async (req, res) => {
   try {
@@ -66,29 +66,32 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
     const emails = emailData.map((email) => email.get({ plain: true }));
-
+    console.log(emails);
     // const newemail = JSON.stringify(emails);
-    console.log(emails.email_body)
+  
 
 
     emails.forEach(element => {
       // var count = ""
       // let re = new RegExp('/([%])+([%])+([%])/g');
-      var ittrEmailBody = element.email_body;
+      var ittrEmailBody = element.email_body.replace(/([%])+([%])+([%])/g, '<input class="form-input" type="text" value=""/>');
+      var ittrId = element.id;
       
+      // ittrEmailBody.replace(/([%])+([%])+([%])/g, '<input class="form-input" type="text" value=""/>')
 
-      // result here needs to be iterable
-      emailBodies.push(ittrEmailBody.replace(/([%])+([%])+([%])/g, '<input class="form-input" type="text"/>'));
-      console.log(emailBodies) // console.log(newBody)
       
-      num = emailBodies.length
+      emailBodies.push({id: ittrId, emailForm : ittrEmailBody});
+      console.log(emailBodies)
+      
+      // num = emailBodies.length
       // return emailBodies;
     });
+    
+
    
     res.render('profile', {
       ...user,
       emails,
-      num,
       emailBodies,
       logged_in: true,
     });

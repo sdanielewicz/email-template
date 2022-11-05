@@ -4,30 +4,39 @@
   </div>
 </div>
 
-<div class="col-md-6 project-list">
+
     <h3>Email Templates:</h3>
 
 {{!-- {{regex}} --}}
     {{#each emails as |email|}}
     
-    <div class="row mb-2">
+    <div class="row mb-2" id="{{email.id}}">
       <div class="col-md-8">
-        <h4>{{email.name}}:</h4>
         
+        <p style="display: none;">{{email.id}}</p>
+        <h4>{{email.name}}:</h4>
+
+
       </div>
     </div>
     {{/each}}
 
-    {{#each emailBodies}}
-    {{num}}
- <div class="row mb-2">
-      <div class="col-md-8">
-        <p>{{{this}}}</p>
+  {{#each emailBodies as |emailBody|}}
+    {{!-- {{num}} --}}
+ <div class="row mb-2 email" id = "{{emailBody.id}}">
+      <div class="col-md-8" >
+        <p>{{{emailBody.emailForm}}}</p>
+
         
       </div>
+      {{!-- button  --}}
+              <button class="btn btn-primary" id="button" type="submit">Templatize</button>
+
     </div>
 {{/each}}
-  </div>
+
+
+
 
 
 <script src="./js/profile.js"></script>
