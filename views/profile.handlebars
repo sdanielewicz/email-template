@@ -5,41 +5,26 @@
 </div>
 
 
-    <h3>Email Templates:</h3>
-
-{{!-- {{regex}} --}}
-    {{#each emails as |email|}}
-    
-    <div class="row mb-2" id="{{email.id}}">
-      <div class="col-md-8">
-        
-        <p style="display: none;">{{email.id}}</p>
-        <h4>{{email.name}}:</h4>
-
-
-      </div>
-    </div>
-    {{/each}}
-
-  {{#each emailBodies as |emailBody|}}
-    {{!-- {{num}} --}}
- <div class="row mb-2 email" id = "{{emailBody.id}}">
-      <div class="col-md-8" >
-        <p>{{{emailBody.emailForm}}}</p>
-
-        
-      </div>
-      {{!-- button  --}}
-              <button class="btn btn-primary" id="button" type="submit">Templatize</button>
-
-    </div>
+<h3>Email Templates:</h3>
+<div>
+{{#each emails as |email|}}
+<div class="row mb-2" >
+  <div class="col-md-8" id="{{email.id}}">
+    <p style="display: none;">{{email.id}}</p>
+    <button class="btn btn-primary btn-lg emailBtn" type="submit" onclick=get(this)> {{email.name}}</button>
+    {{!-- <i class="fas fa-envelope"></i> --}}
+  </div>
+</div>
 {{/each}}
 
-
-
-
+{{!-- {{#each emailBodies as |emailBody|}}
+<div class="row mb-2 email" id="{{emailBody.id}}">
+  <div class="col-md-8">
+    <p>{{{emailBody.emailForm}}}</p>
+  </div>
+  <button class="btn btn-primary" id="button" type="submit">Templatize</button>
+</div>
+{{/each}} --}}
+</div>
 
 <script src="./js/profile.js"></script>
-
-
-{{!-- <script src="./js/logout.js"></script> --}}

@@ -18,27 +18,27 @@ router.get('/', async (req, res) => {
 
 
 
-router.get('/emails/:id', async (req, res) => {
-  try {
-    const emailData = await Email.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+// router.get('/emails/:id', async (req, res) => {
+//   try {
+//     const emailData = await Email.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
 
-    const email = emailData.get({ plain: true });
+//     const email = emailData.get({ plain: true });
 
-    res.render('profile', {
-      ...email,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('profile', {
+//       ...email,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {

@@ -1,59 +1,63 @@
-
-
-var templateButton = document.querySelector("#button");
-
-
-var emalObj = {};
-
-  const logout = async () => {
-    const response = await fetch('/api/users/logout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
+ const goToEmail = async (event) => {
+  event.preventDefault();
   
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert(response.statusText);
+  // let destination = document.getElementsByClassName('emailBtn').value
+  console.log(idValue+" is where you are going")
+
+  const response = await fetch(`/api/emails/${idValue}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    // document.location.replace('/profile');
+    console.log(response)
+  } else {
+    alert('Failed to create project');
+  }
+
+  // console.log(emailButtons.getAttribute("value"))
+
+  }
+
+function get(clickedButton){
+  idValue= clickedButton.getAttribute('value');
+  console.log(idValue)
+  return idValue;
+}
+
+  var emailButtons = document.getElementsByClassName('emailBtn')
+  var idValue;
+
+    for (var i = 0; i < emailButtons.length; i++){
+      emailButtons[i].addEventListener('click',goToEmail);
+      var emailButtonId = emailButtons[i].parentElement.id;
+      emailButtons[i].setAttribute("value" , emailButtonId);
+
     }
-  };
 
- function submitEmail(){
-  // var items = document.getElementsByClassName("form-input")[1].value;
-  // console.log(items)
-  
-  let buttonParent = templateButton.parentElement;
-  let formChild = buttonParent.childNodes[1].children[0].childNodes[1];
-  console.log(formChild.value)
-  
-
-  // console.log(templateButton.parentElement);
-  // console.log(formChild);
- }
+    // emailButtons.forEach(element => {
+    //   element.addEventListener('click',goToEmail);
+    // })
+    // .addEventListener('click',goToEmail)
 
 
+    // var templateButton = document.querySelector("#button");
 
+    // function submitEmail(event){
+    //   // var items = document.getElementsByClassName("form-input")[1].value;
+    //   // console.log(items)
+    //   event.preventDefault();
+      
+    //   let buttonParent = templateButton.parentElement;
+    //   let formChild = buttonParent.childNodes[1].children[0].childNodes[1];
+    //   console.log(formChild.value)
+      
+    
+    //   // console.log(templateButton.parentElement);
+    //   // console.log(formChild);
+    //  }
 
-//   document
-//     .querySelector('.new-project-form')
-//     .addEventListener('submit', newFormHandler);
-  
-//   document
-//     .querySelector('.project-list')
-//     .addEventListener('click', delButtonHandler);
-
-templateButton.addEventListener('click',submitEmail)
-
-    document.querySelector('#logout').addEventListener('click', logout);
-
-
-    // const getEmail = async () => {
-//     preventDefault();
-
-//     const response = await fetch(`/api/emails`, {
-//         method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     })
-// }
+    // templateButton.addEventListener('click',submitEmail)

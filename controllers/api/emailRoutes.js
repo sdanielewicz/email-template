@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Email } = require('../../models');
+const { Email, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // router.post('/', withAuth, async (req, res) => {
@@ -43,7 +43,34 @@ router.get('/', async (req, res) => {
         
       });
       res.status(200).json(emailData);
-    } catch (err) {
+    } 
+    catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+  router.get('/:id', async (req, res) => {
+    try {
+      const emailData = await Email.findByPk(req.params.id, {
+              include: [
+                {
+                  model: User,
+                  attributes: ['name'],
+                },
+              ],
+            });
+            
+      
+      res.status(200).json(emailData);
+  
+      // const email = emailData.get({ plain: true });
+  
+      // res.render('profile', {
+      //   ...email,
+      //   logged_in: req.session.logged_in
+      // });
+    } 
+    catch (err) {
       res.status(500).json(err);
     }
   });
