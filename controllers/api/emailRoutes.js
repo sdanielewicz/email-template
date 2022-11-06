@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { Email, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+var emailBodies = [];
+
+
 // router.post('/', withAuth, async (req, res) => {
 //   try {
 //     const newProject = await Project.create({
@@ -49,7 +52,7 @@ router.get('/', async (req, res) => {
     }
   });
 
-  router.get('/:id', async (req, res) => {
+  router.get('/:id', withAuth, async (req, res) => {
     try {
       const emailData = await Email.findByPk(req.params.id, {
               include: [
@@ -64,11 +67,25 @@ router.get('/', async (req, res) => {
       // res.status(200).json(emailData);
 
        
+      console.log("HEREHRHRHERHER"+emailData)
 
-    const email = emailData.get({ plain: true });
+    const emails = emailData.get({ plain: true });
+    // const emails = emailData.map((email) => email.get({ plain: true }));
+    console.log("HEREHRHRHERHER2222222"+JSON.stringify(emails))
+    let stringEmail = JSON.stringify(emails);
+    // console.log(stringEmail);
+            console.log(emails);
+            console.log(emails.email_body);
+            // console.log(emails.email_body.replace(/([%])+([%])+([%])/g, '<input class="form-input" type="text" value=""/>'));
+
+            var regEmail = emails.email_body.replace(/([%])+([%])+([%])/g, '<input class="form-input" type="text" value=""/>')
+  
+            console.log(regEmail);
 
     res.render('emails', {
-       ...email
+       emails,
+       regEmail,
+       logged_in: true,
     });
     } 
     catch (err) {

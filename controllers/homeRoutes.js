@@ -66,25 +66,22 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
     const emails = emailData.map((email) => email.get({ plain: true }));
-    console.log(emails);
     // const newemail = JSON.stringify(emails);
   
 
 
     emails.forEach(element => {
-      // var count = ""
-      // let re = new RegExp('/([%])+([%])+([%])/g');
+      
       var ittrEmailBody = element.email_body.replace(/([%])+([%])+([%])/g, '<input class="form-input" type="text" value=""/>');
       var ittrId = element.id;
       
-      // ittrEmailBody.replace(/([%])+([%])+([%])/g, '<input class="form-input" type="text" value=""/>')
+      
 
       
       emailBodies.push({id: ittrId, emailForm : ittrEmailBody});
       console.log(emailBodies)
       
-      // num = emailBodies.length
-      // return emailBodies;
+      
     });
     
 
