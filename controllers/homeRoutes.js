@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 
 //     const email = emailData.get({ plain: true });
 
-//     res.render('profile', {
+//     res.render('emails', {
 //       ...email,
 //       logged_in: req.session.logged_in
 //     });

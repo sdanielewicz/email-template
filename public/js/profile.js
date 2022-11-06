@@ -12,10 +12,10 @@
   });
 
   if (response.ok) {
-    // document.location.replace('/profile');
     console.log(response)
+    document.location.replace('/api/emails/'+idValue);
   } else {
-    alert('Failed to create project');
+    alert('Failed to get Email template');
   }
 
   // console.log(emailButtons.getAttribute("value"))

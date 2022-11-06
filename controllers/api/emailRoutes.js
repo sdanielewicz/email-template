@@ -61,14 +61,15 @@ router.get('/', async (req, res) => {
             });
             
       
-      res.status(200).json(emailData);
-  
-      // const email = emailData.get({ plain: true });
-  
-      // res.render('profile', {
-      //   ...email,
-      //   logged_in: req.session.logged_in
-      // });
+      // res.status(200).json(emailData);
+
+       
+
+    const email = emailData.get({ plain: true });
+
+    res.render('emails', {
+       ...email
+    });
     } 
     catch (err) {
       res.status(500).json(err);
