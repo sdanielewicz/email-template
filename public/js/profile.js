@@ -10,7 +10,6 @@
       'Content-Type': 'application/json',
     },
   });
-  console.log('/api/emails/'+idValue);
 
   if (response.ok) {
     // console.log(response)

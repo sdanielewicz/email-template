@@ -1,23 +1,46 @@
-    // emailButtons.forEach(element => {
-    //   element.addEventListener('click',goToEmail);
-    // })
-    // .addEventListener('click',goToEmail)
+var templateButton = document.querySelector("#button");
+var formInput = document.getElementsByClassName("form-input")
+var emailId = document.getElementsByClassName("email")[0].id
+var templateBody=[];
+var formArray = [];
 
 
-    var templateButton = document.querySelector("#button");
-console.log(templateButton);
-    function submitEmail(event){
-      // var items = document.getElementsByClassName("form-input")[1].value;
-      // console.log(items)
-      event.preventDefault();
+function init(){
+templateBody.push({id:emailId})
+}
+
+function getEmail(){
       
-      let buttonParent = templateButton.parentElement;
-      let formChild = buttonParent.childNodes[1].children[0].childNodes[1];
-      console.log(formChild.value)
-      
-    
-      // console.log(templateButton.parentElement);
-      // console.log(formChild);
+for (var i = 0; i < formInput.length; i++){
+    formArray.push(formInput[i].value)
+    console.log(formArray)  
+    }
+    templateBody.push({input:formArray})
+    console.log(templateBody);
      }
 
-    templateButton.addEventListener('click',submitEmail)
+    
+
+
+   
+        // document.location.replace('/profile');
+    const sendEmail = async (event) => {
+  event.preventDefault();
+getEmail();
+        const response = await fetch(`/api/emails/`+emailId, {
+            method: 'POST',
+            body:JSON.stringify({templateBody}),
+            headers: {
+                'Content-Type':'applicaion/json'
+            },
+            });
+        
+            if(response.ok){
+                console.log("WORKED")
+            } else {
+                alert('Send of form failed')
+            }
+        }
+
+        templateButton.addEventListener('click',sendEmail)
+    init();

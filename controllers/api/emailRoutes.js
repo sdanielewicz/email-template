@@ -93,5 +93,14 @@ router.get('/', async (req, res) => {
     }
   });
 
+router.post('/:id',async (req,res)=>{
+  try {
+    const data = await (req.body)
+    console.log("WORKED?"+data)
+    res.status(200).json(data)
+  }catch{
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;
