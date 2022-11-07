@@ -13,4 +13,6 @@ Email.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
+// Template.belongsTo(Email)
+
 module.exports = { User, Email, Template };
