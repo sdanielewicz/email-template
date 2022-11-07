@@ -87,10 +87,12 @@ router.post('/:id', async (req, res) => {
         var splitString=templateBody.split(' ')
         // console.log(splitString);
         
-
+        var count = -1;
         for(var i =0; i < splitString.length; i++){
+            
             if(splitString[i].match(regex)){
-               var result = splitString[i].replace(/([%])+([%])+([%])/, dataIn[0]);
+                count = count + 1;
+               var result = splitString[i].replace(/([%])+([%])+([%])/, dataIn[count]);
                 console.log(result);
                 emailString +=" " + result
             }
