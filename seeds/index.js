@@ -1,9 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Email} = require('../models');
+const { User, Email, Template} = require('../models');
 
 const userData = require('./userData.json');
 const emailData = require('./emailData.json');
-
+const templateData = require('./templateData.json')
 
 const seedDB = async () => {
   await sequelize.sync({ force: true });
@@ -23,6 +23,13 @@ const seedDB = async () => {
     });
   }
   console.log('\n----- EMAILS SEEDED -----\n');
+
+  for (const templates of templateData) {
+    await Template.create({
+      ...templates,                                           
+    });
+  }
+  console.log('\n----- Templates SEEDED -----\n');
 
   process.exit(0);
 };
