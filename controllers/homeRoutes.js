@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Email, User} = require('../models');
+const {Email, User, Template} = require('../models');
 const withAuth = require('../utils/auth');
 
 // var emailBodies= {id: "", emailForm: ""};

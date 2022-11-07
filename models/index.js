@@ -1,5 +1,6 @@
 const User = require('./User');
 const Email = require('./Email');
+const Template = require('./Template');
 
 // User.hasMany(Email, {
 //   foreignKey: 'user_id',
@@ -12,4 +13,4 @@ Email.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-module.exports = { User, Email }  ;
+module.exports = { User, Email, Template };
